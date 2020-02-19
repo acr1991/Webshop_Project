@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import productReducer from "./Product/reducer";
 //import developersReducer from "./developerReducer";
 //import postReducer from "./post/reducer";
 //function havingFunReducer(state = "yes", action) {
@@ -12,6 +13,7 @@ import { combineReducers } from "redux";
 //   }
 // }
 export default combineReducers({
+  products: productReducer
   // developers: developersReducer,
   // havingFun: havingFunReducer,
   // post: postReducer
