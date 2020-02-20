@@ -24,11 +24,8 @@ class ProductList extends Component {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">
-                    {product.price}
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
+                  <p className="card-text">{product.price}</p>
+                  <p className="card-inStock"> {product.inStock}</p>
                   <a href="#" className="btn btn-primary">
                     Add to cart
                   </a>

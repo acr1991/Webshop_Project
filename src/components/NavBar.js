@@ -1,23 +1,26 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-export default class Homepage extends Component {
+//import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchProductsAndCategories } from "../store/Product/actions";
+class NavBar extends Component {
+  state = { searchTerm: "", searchSubbmited: false };
+
+  componentDidMount() {
+    this.props.dispatch(fetchProductsAndCategories);
+  }
+  search = e => {
+    e.preventDefault();
+    const x = this.props.products;
+    const search = x.filter(product => product.name === this.state.searchTerm);
+    return search;
+  };
   render() {
+    console.log(this.state.searchQuery);
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="#">
           Webshop
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
@@ -31,20 +34,7 @@ export default class Homepage extends Component {
                 Profile
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
+            <li className="nav-item dropdown"></li>
             <li className="nav-item"></li>
             <li className="nav-item">
               <a className="nav-link" href="#">
@@ -54,6 +44,7 @@ export default class Homepage extends Component {
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input
+              onChange={e => this.setState({ searchQuery: e.target.value })}
               className="form-control mr-sm-2"
               type="search"
               placeholder="Search"
@@ -71,3 +62,9 @@ export default class Homepage extends Component {
     );
   }
 }
+function mapStateToProps(reduxstore) {
+  return {
+    products: reduxstore.products
+  };
+}
+export default connect(mapStateToProps)(NavBar);
