@@ -13,15 +13,32 @@ class ProductList extends Component {
       );
     return (
       <div>
-        <ul>
-          {products.length > 0 ? (
-            products.map(product => {
-              return <div>{product.imageUrl}</div>;
-            })
-          ) : (
-            <div>Loading...</div>
-          )}
-        </ul>
+        {products.length > 0 ? (
+          products.slice(0, 10).map(product => {
+            return (
+              <div className="card" style={cardStyle}>
+                <img
+                  src={product.imageUrl}
+                  className="card-img-top"
+                  alt="..."
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{product.name}</h5>
+                  <p className="card-text">
+                    {product.price}
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <a href="#" className="btn btn-primary">
+                    Add to cart
+                  </a>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
     );
   }
@@ -32,4 +49,10 @@ function mapStateToProps(reduxState) {
     products: reduxState.products.list
   };
 }
+
+const cardStyle = {
+  width: "280px",
+  float: "left"
+};
+const divStyle = { display: "flex" };
 export default connect(mapStateToProps)(ProductList);
