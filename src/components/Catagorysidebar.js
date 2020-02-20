@@ -5,11 +5,17 @@ class Categorysidebar extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.props.categories.map(categories => {
-            return <li>{categories.name}</li>;
-          })}
-        </ul>
+        <nav>
+          <ul>
+            {this.props.categories.map(categories => {
+              return (
+                <li>
+                  <a href={categories.id}>{categories.name}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
     );
   }
