@@ -3,29 +3,7 @@ import { Link } from "react-router-dom";
 export default class Homepage extends Component {
   render() {
     return (
-      // <nav classNameName="nav-wrapper">
-      //   <div className="container">
-      //     <Link to="/" className="brand-logo">
-      //       Shopping
-      //     </Link>
-
-      //     <ul className="right">
-      //       <li>
-      //         <Link to="/">Home</Link>
-      //       </li>
-      //       <li>
-      //         <Link to="/cart">My cart</Link>
-      //       </li>
-      //       <li>
-      //         <Link to="/cart">
-      //           <i className="material-icons">shopping_cart</i>
-      //         </Link>
-      //       </li>
-      //     </ul>
-      //   </div>
-      // </nav>
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="#">
           Webshop
         </a>

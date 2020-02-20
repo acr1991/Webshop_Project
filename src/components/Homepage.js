@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { fetchProducts } from "../store/Product/actions.js";
+import { fetchProductsAndCategories } from "../store/Product/actions.js";
 import { connect } from "react-redux";
 import NavBar from "./NavBar";
 import ProductList from "./ProductList";
+import Categorysidebar from "./Catagorysidebar";
 
 class Homepage extends Component {
   componentDidMount() {
     console.log(this.props);
-    this.props.dispatch(fetchProducts());
+    this.props.dispatch(fetchProductsAndCategories());
   }
 
   render() {
@@ -17,16 +18,23 @@ class Homepage extends Component {
     return (
       <div className="products">
         <NavBar />
-        <div name="pageContainer">
-          HOMEPAGE
-          <ProductList />
+        <div name="pageContainer" style={{ display: "flex" }}>
+          <div style={{ flex: 1 }}>
+            <Categorysidebar />
+          </div>
+          <div style={{ flex: 4 }}>
+            <ProductList />
+          </div>
         </div>
       </div>
     );
   }
 }
-
-export default connect()(Homepage);
+function mapStateToProps(reduxState) {
+  console.log(reduxState.categories);
+  return { products: reduxState.categories };
+}
+export default connect(mapStateToProps)(Homepage);
 
 // renderProduct = (product, index) => {
 //   return (

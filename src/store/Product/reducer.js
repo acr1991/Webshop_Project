@@ -1,4 +1,4 @@
-const initialState = { list: [], cart: [] };
+const initialState = { list: [], cart: [], categories: [] };
 
 export default function productReducer(state = initialState, action) {
   switch (action.type) {
@@ -6,6 +6,12 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         list: action.payload
+      };
+    }
+    case "CATEGORIES_FETCHED": {
+      return {
+        ...state,
+        categories: action.payload
       };
     }
     default: {
