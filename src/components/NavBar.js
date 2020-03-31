@@ -18,6 +18,16 @@ class NavBar extends Component {
     console.log(this.state.searchQuery);
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <input
+          onChange={e => this.setState({ searchQuery: e.target.value })}
+          className="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
         <a className="navbar-brand" href="#">
           Webshop
         </a>
@@ -42,21 +52,7 @@ class NavBar extends Component {
               </a>
             </li>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <input
-              onChange={e => this.setState({ searchQuery: e.target.value })}
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
+          <form className="form-inline my-2 my-lg-0"></form>
         </div>
       </nav>
     );

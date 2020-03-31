@@ -26,3 +26,9 @@ export function categoryFetched(categories) {
     payload: categories //how you see the real data, arr of objs
   };
 }
+export function searchQuery(FilterString) {
+  return {
+    type: "FILTER_SEARCH",
+    payload: FilterString
+  };
+}
